@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+  --revvity-yellow: 255, 204, 0;
+  --revvity-blue: 0, 91, 170;
+  --revvity-gray: 102, 102, 102;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+}
+
+.revvity-gradient {
+  background: linear-gradient(135deg, rgba(var(--revvity-yellow), 0.8) 0%, rgba(var(--revvity-yellow), 0.2) 100%);
+  border-radius: 0 0 0 70%;
+}
+
+.nav-link {
+  @apply relative text-gray-700 hover:text-black transition-colors duration-200;
+}
+
+.nav-link::after {
+  content: "";
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.btn-primary {
+  @apply bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply border border-black text-black px-6 py-3 rounded-md hover:bg-gray-100 transition-colors duration-200;
+}
+
+.card-hover {
+  @apply transition-transform duration-300 hover:scale-105;
+}
