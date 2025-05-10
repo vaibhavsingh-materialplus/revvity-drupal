@@ -4,7 +4,7 @@ import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import Script from 'next/script';
-
+import AnalyticsProvider from './analytics-provider';
 
 
 const inter = Inter({ subsets: ["latin"] })
@@ -47,7 +47,7 @@ export default function RootLayout({
 
 
 
-      
+      <AnalyticsProvider />
       <body className={inter.className}>
         <Header />
         <main>{children}</main>
