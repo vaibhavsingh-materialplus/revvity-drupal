@@ -3,6 +3,9 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import Script from 'next/script';
+
+
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -19,15 +22,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEQN87N0TP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      <head>
+        {/* Google Analytics Scripts */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-SEQN87N0TP`}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-SEQN87N0TP', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+      </head>
 
-  gtag('config', 'G-SEQN87N0TP');
-</script>
+
+
+
+      
       <body className={inter.className}>
         <Header />
         <main>{children}</main>
